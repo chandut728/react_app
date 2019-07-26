@@ -1,19 +1,32 @@
 import './App.css'
+import React, {useState} from 'react'
 
-import React, {Component} from 'react'
 
-class App extends Component {
-  render() {
-    return <div className="App">
-      <div className="App-heading App-flex">
-        <h2>Welcome to <span className="App-react">React</span></h2>
-      </div>
-      <div className="App-instructions App-flex">
-        <img className="App-logo" src={require('./react.svg')}/>
-        <p>Edit <code>src/App.js</code> and save to hot reload your changes.</p>
-      </div>
-    </div>
+
+import Name from './name'
+import Image from './image'
+
+
+
+function App () {
+  const [count, setCount]=useState(0);
+  function handleAlertClick(){
+    setTimeout(()=>{
+      alert('You Click On: ' + count);
+    }, 3000)
   }
+
+    return <div className="App">
+      <Name/>
+      <Image/>
+      <h1>React First App</h1>
+      <p>you click <br/>{count} <br/> times</p>
+      <button className="b1" onClick={()=>setCount(count+1)}>Increment</button>
+      <button className="b2" onClick={()=>setCount(count-1)}>Decrement</button>
+      <button className="b3" onClick={()=>setCount(count===0)}>Reset</button>
+      <br/>
+      <button className="b4" onClick={handleAlertClick}>Submit</button>
+    </div>
 }
 
 export default App
